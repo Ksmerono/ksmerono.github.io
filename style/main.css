@@ -1,0 +1,159 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", "sans-serif";
+}
+
+.bg-gradient-main {
+  background: rgb(24, 24, 24);
+  background: linear-gradient(
+    129deg,
+    rgb(66, 0, 90) 0%,
+    rgb(0, 28, 68) 38%,
+    rgb(66, 0, 90) 85%
+  );
+}
+
+.bg-nav,.bg-footer {
+  background-color: rgba(0, 0, 0, 0.267);
+}
+
+.text-white {
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .p-section {
+    padding-block: calc(5rem + 1.5vw) !important;
+  }
+}
+
+@media (min-width: 992px){
+  .info-company{
+    width: 300px;
+  }
+}
+
+
+@media (max-width: 991px) {
+    .p-section {
+      padding-block: calc(5rem + 1.5vw) !important;
+    }
+    .navbar-collapse {
+      flex-basis: 100%;
+      flex-grow: 1;
+      align-items: center;
+      margin-bottom: -8px;
+      margin-left: -10px;
+      margin-top: 10px;
+      margin-right: -10px;
+      background-color: #ffffff1a;
+    }
+    .nav-link {
+        border-radius: 0 !important;
+      }
+      .nav-link:hover {
+        background-color: transparent !important;
+        color: white !important;
+        transform: scale(1.2);
+      }
+      
+  }
+
+
+.sice-person {
+  font-size: calc(1.5rem + 1.5vw);
+  font-weight: 900;
+  white-space: nowrap;
+}
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.199);
+  color: white !important;
+  transform: scale(1.1);
+}
+.nav-link {
+  border-radius: 20px;
+  transition:  .2s;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+.navbar-toggler {
+  border: none !important;
+}
+.navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.199);
+  color: white !important;
+}
+.navbar-toggler{
+    width: 50px;
+    height: 50px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255 255 255);
+}
+
+.title-article{
+  color: #0f3586;
+}
+
+.card{
+  border-radius: 20px;
+}
+
+.row>*{
+  padding: calc(var(--bs-gutter-x) * .5);
+}
+
+.effect-zoom{
+  transition:  .2s;
+}
+.effect-zoom:hover{
+  transform: scale(1.1);
+}
+
+@media (min-width: 1400px){
+.container,.container-lg{
+  max-width: 1149px;
+}
+}
+
+#formacion,#habilidades{
+  background-color: rgba(255, 255, 255, 0.212);
+}
+
+
+.r-border-20{
+  border-radius: 20px !important;
+}
+
+.list-group-item{
+  border: none;
+
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: none;
+  outline: 0;
+  box-shadow: none;
+}
+.accordion-button:not(.collapsed) {
+  color: #0c63e4;
+  background-color: none;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.icon-skills{
+
+height: 70px;
+}
+
+.ratio1x1{
+  aspect-ratio: 1/1;
+}
+
+
+
