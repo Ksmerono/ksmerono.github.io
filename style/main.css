@@ -22,12 +22,13 @@ body {
 .text-white {
   color: white;
 }
-
+/*
 @media (min-width: 768px) {
   .p-section {
     padding-block: calc(5rem + 1.5vw) !important;
   }
 }
+*/
 
 @media (min-width: 992px){
   .info-company{
