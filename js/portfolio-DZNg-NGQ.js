@@ -4,7 +4,7 @@ import 'html-escaper';
 import 'clsx';
 import { g as globalStylesUrl } from './_slug_.11219a75-CduQY_rF.js';
 
-const windowControlsScriptUrl = "/assets/window-controls-BYhiBJRg.ts";
+const windowControlsScriptUrl = "/js/window-controls-C_wwC6i4.js";
 
 var __freeze = Object.freeze;
 var __defProp = Object.defineProperty;

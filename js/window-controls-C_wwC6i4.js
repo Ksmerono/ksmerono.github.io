@@ -1,13 +1,11 @@
-const modalState = {
-  activeWindow: null as HTMLElement | null,
-};
+const modalState = { activeWindow: null };
 
-const getWindowTitle = (win: HTMLElement | null): string =>
+const getWindowTitle = (win) =>
   win?.dataset.windowTitle?.trim() ||
-  win?.querySelector<HTMLElement>(".section-title")?.textContent?.trim() ||
-  "ventana";
+  win?.querySelector(".section-title")?.textContent?.trim() ||
+  "Ventana";
 
-const createOverlay = (className: string, html: string) => {
+const createOverlay = (className, html) => {
   const overlay = document.createElement("div");
   overlay.className = `window-overlay ${className}`;
   overlay.innerHTML = html;
@@ -52,19 +50,19 @@ const maximizeOverlay = createOverlay(
   `
 );
 
-const maximizeBody = maximizeOverlay.querySelector<HTMLElement>(".window-modal__body");
-const closeTitle = closeOverlay.querySelector<HTMLElement>(".window-modal__title");
-const maximizeTitle = maximizeOverlay.querySelector<HTMLElement>(".window-modal__title");
+const maximizeBody = maximizeOverlay.querySelector(".window-modal__body");
+const closeTitle = closeOverlay.querySelector(".window-modal__title");
+const maximizeTitle = maximizeOverlay.querySelector(".window-modal__title");
 
-const toggleBodyLock = (lock: boolean) => {
+const toggleBodyLock = (lock) => {
   document.body.classList.toggle("window-modal-open", lock);
 };
 
-const toggleOverlayVisibility = (overlay: HTMLElement, show: boolean) => {
+const toggleOverlayVisibility = (overlay, show) => {
   overlay.classList.toggle("active", show);
 };
 
-const showCloseOverlay = (win: HTMLElement) => {
+const showCloseOverlay = (win) => {
   modalState.activeWindow = win;
   if (closeTitle) {
     closeTitle.textContent = `Cerrar ${getWindowTitle(win)}`;
@@ -77,12 +75,12 @@ const hideCloseOverlay = () => {
   modalState.activeWindow = null;
 };
 
-const showMaximizeOverlay = (win: HTMLElement) => {
+const showMaximizeOverlay = (win) => {
   if (!maximizeBody) return;
-  const source = win.querySelector<HTMLElement>(".terminal-body");
+  const source = win.querySelector(".terminal-body");
   maximizeBody.innerHTML = "";
   if (source) {
-    const clone = source.cloneNode(true) as HTMLElement;
+    const clone = source.cloneNode(true);
     clone.classList.add("maximize-snapshot");
     maximizeBody.appendChild(clone);
   }
@@ -102,11 +100,11 @@ const hideMaximizeOverlay = () => {
 };
 
 closeOverlay
-  .querySelector<HTMLButtonElement>("[data-close-cancel]")
+  .querySelector("[data-close-cancel]")
   ?.addEventListener("click", hideCloseOverlay);
 
 closeOverlay
-  .querySelector<HTMLButtonElement>("[data-close-confirm]")
+  .querySelector("[data-close-confirm]")
   ?.addEventListener("click", () => {
     if (modalState.activeWindow) {
       modalState.activeWindow.classList.add("hidden");
@@ -121,22 +119,17 @@ maximizeOverlay.addEventListener("click", (event) => {
 });
 
 maximizeOverlay
-  .querySelector<HTMLButtonElement>("[data-max-close]")
+  .querySelector("[data-max-close]")
   ?.addEventListener("click", hideMaximizeOverlay);
 
-const toggleMinimize = (win: HTMLElement) => {
+const toggleMinimize = (win) => {
   if (win.classList.contains("hidden")) return;
   win.classList.toggle("minimized");
 };
 
-const getControlWindow = (event: MouseEvent) => {
-  const target = event.target as HTMLElement;
-  return target.closest<HTMLElement>(".terminal-window");
-};
-
-const handleControlClick = (event: MouseEvent) => {
-  const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".terminal-dot");
-  const win = button?.closest<HTMLElement>(".terminal-window");
+const handleControlClick = (event) => {
+  const button = event.target.closest(".terminal-dot");
+  const win = button?.closest(".terminal-window");
   if (!button || !win) return;
   const action = button.dataset.action;
   if (action === "minimize") {
