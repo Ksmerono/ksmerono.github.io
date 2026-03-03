@@ -1,0 +1,10 @@
+.about-wrapper {
+  max-width: 700px;
+}
+.about-text {
+  margin-bottom: 1rem;
+}
+.about-muted {
+  margin-bottom: 1rem;
+  color: #8b949e;
+}

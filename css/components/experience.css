@@ -1,0 +1,31 @@
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.experience-entry {
+  border-left: 2px solid var(--border-color);
+  padding-left: 1.5rem;
+  position: relative;
+}
+.experience-dot {
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--secondary-color);
+}
+.job-role {
+  margin-bottom: 0.25rem;
+}
+.job-company {
+  color: var(--text-color);
+  font-weight: normal;
+}
+.job-date {
+  color: #8b949e;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
