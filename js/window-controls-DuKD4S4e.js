@@ -81,6 +81,7 @@ const showMaximizeOverlay = (win) => {
   if (source) {
     const clone = source.cloneNode(true);
     clone.classList.add("maximize-snapshot");
+    clone.style.maxHeight = "";
     maximizeBody.appendChild(clone);
   }
   if (maximizeTitle) {
@@ -121,9 +122,47 @@ maximizeOverlay
   .querySelector("[data-max-close]")
   ?.addEventListener("click", hideMaximizeOverlay);
 
+const collapseBody = (body) => {
+  if (!body.dataset.expandedHeight) {
+    const previous = body.style.maxHeight;
+    body.style.maxHeight = "none";
+    body.dataset.expandedHeight = String(
+      Math.ceil(body.getBoundingClientRect().height)
+    );
+    body.style.maxHeight = previous;
+  }
+  body.style.maxHeight = `${body.dataset.expandedHeight}px`;
+  body.getBoundingClientRect();
+  body.style.maxHeight = "0px";
+};
+
+const expandBody = (body) => {
+  const target = body.dataset.expandedHeight;
+  body.style.maxHeight = "0px";
+  body.getBoundingClientRect();
+  if (!target) {
+    body.style.maxHeight = "";
+    return;
+  }
+  body.style.maxHeight = `${target}px`;
+  const onEnd = (event) => {
+    if (event.propertyName !== "max-height") return;
+    body.style.maxHeight = "";
+    body.removeEventListener("transitionend", onEnd);
+  };
+  body.addEventListener("transitionend", onEnd);
+};
+
 const toggleMinimize = (win) => {
   if (win.classList.contains("hidden")) return;
-  win.classList.toggle("minimized");
+  const body = win.querySelector(".terminal-body");
+  const minimized = win.classList.toggle("minimized");
+  if (!body) return;
+  if (minimized) {
+    collapseBody(body);
+  } else {
+    expandBody(body);
+  }
 };
 
 const handleControlClick = (event) => {
